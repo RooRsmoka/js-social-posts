@@ -93,4 +93,32 @@ function printPost(container, postList) {
 // Richiamo la funzione per stampare in pagina tutti i post.
 printPost(postContainer, posts);
 
+// function createPostTemplate(post)
+
 // MILESTONE 3
+
+const likeButtons = document.querySelectorAll('.js-like-button');
+
+const likeCounters = document.querySelectorAll('.js-likes-counter');
+
+for(let i = 0; i < likeButtons.length; i++) {
+    const likeBtn = likeButtons[i];
+
+    likeBtn.addEventListener('click', function(event) {
+
+        event.preventDefault();
+
+        const currentCounterHtml = likeCounters[i];
+
+        this.classList.add('like-button--liked');
+        const currentCounterInt = parseInt(currentCounterHtml.innerHTML);
+
+        currentCounterHtml.innerHTML = currentCounterInt + 1;
+
+        posts[i].likes++;
+    },
+        {
+            once: true
+        }
+    );
+}
